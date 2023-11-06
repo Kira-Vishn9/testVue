@@ -9,8 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.4",
-    "axios-mock-adapter": "^1.22.0"
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "axios-mock-adapter": "^1.22.0",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

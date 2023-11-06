@@ -6,5 +6,4 @@ import RegistrationPage from "./page/registrationPage.vue";
   <registrationPage />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,6 +1,6 @@
 <script lang="ts">
-import imgEyeOpen from '../assets/showed.svg'
-import imgEyeHided from '../assets/hided.svg'
+import imgEyeOpen from "../assets/showed.svg";
+import imgEyeHided from "../assets/hided.svg";
 export default {
   props: {
     value: String,
@@ -9,14 +9,14 @@ export default {
   },
   data() {
     return {
-      showPassword: this.isShowPassword
-    }
+      showPassword: this.isShowPassword,
+    };
   },
-  emits: ['input:value'],
+  emits: ["input:value"],
   methods: {
     onInput(event: Event) {
       if (!(event.target instanceof HTMLInputElement)) return;
-      this.$emit('input:value', event.target.value);
+      this.$emit("input:value", event.target.value);
     },
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
@@ -24,8 +24,8 @@ export default {
   },
   computed: {
     changeImgEye() {
-      return this.showPassword ? imgEyeOpen : imgEyeHided
-    }
+      return this.showPassword ? imgEyeOpen : imgEyeHided;
+    },
   },
 };
 </script>
@@ -33,11 +33,11 @@ export default {
 <template>
   <div class="password-input">
     <input
-        :type="showPassword ? 'text' : 'password'"
-        :placeholder="placeholder"
-        @input="onInput"
-        :value="value"
-        autocomplete="new-password"
+      :type="showPassword ? 'text' : 'password'"
+      :placeholder="placeholder"
+      @input="onInput"
+      :value="value"
+      autocomplete="new-password"
     />
     <img
       class="eye"
@@ -52,9 +52,9 @@ export default {
 .password-input {
   position: relative;
 }
-  .eye {
-    position: absolute;
-    right: 8px;
-    top: 17px;
-  }
+.eye {
+  position: absolute;
+  right: 8px;
+  top: 17px;
+}
 </style>

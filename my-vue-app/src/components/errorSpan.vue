@@ -8,18 +8,17 @@
 export default {
   props: {
     value: String,
-  }
+  },
 };
-
 </script>
 
 <template>
-  <span v-if=(this.value) class="error"> {{ value }}</span>
+  <span v-if="this.value" class="error"> {{ value }}</span>
 </template>
 
 <style scoped>
-  .error{
-    color: red;
-    margin-top: 5px;
-  }
+.error {
+  color: red;
+  margin-top: 5px;
+}
 </style>

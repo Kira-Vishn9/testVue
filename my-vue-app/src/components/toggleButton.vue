@@ -1,56 +1,59 @@
 <script lang="ts">
-
 export default {
   props: {
     value: Boolean,
   },
-  emits: ['update:value'],
+  emits: ["update:value"],
   methods: {
     onChange(event: Event) {
-      if(!(event.target instanceof HTMLInputElement)) return
-      this.$emit('update:value', event.target.checked);
+      if (!(event.target instanceof HTMLInputElement)) return;
+      this.$emit("update:value", event.target.checked);
     },
   },
 };
-
 </script>
 
 <template>
   <div class="container1">
     <label class="switch">
-      <input type="checkbox" :checked="value" @change="onChange">
+      <input type="checkbox" :checked="value" @change="onChange" />
       <span class="slider round"></span>
     </label>
     <div class="wrap_toggle">
-      <span class="title_toggle">Хотите чтобы Ваш профиль видели другие участники платформы? </span>
-      <p class="text">Включает профиль для просмотра другими пользователями по ссылке</p>
+      <span class="title_toggle"
+        >Хотите чтобы Ваш профиль видели другие участники платформы?
+      </span>
+      <p class="text">
+        Включает профиль для просмотра другими пользователями по ссылке
+      </p>
     </div>
   </div>
 </template>
 
 <style scoped>
-.wrap_toggle{
+.wrap_toggle {
   margin-left: 6px;
 }
 .title_toggle {
   color: #000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
 }
-.text{
+.text {
   color: #696977;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: -0.021px;
 }
-.container1{
-  display: flex;}
+.container1 {
+  display: flex;
+}
 .switch {
   position: relative;
   display: inline-block;
@@ -72,8 +75,8 @@ export default {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -84,17 +87,17 @@ export default {
   left: -5px;
   bottom: 1px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   margin-right: 5px;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
