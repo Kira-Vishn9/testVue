@@ -24,7 +24,4 @@ export default {
 </template>
 
 <style scoped>
-    .wrap-select {
-      position: relative;
-      left: 233px;}
 </style>

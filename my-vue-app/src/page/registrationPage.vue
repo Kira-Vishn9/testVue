@@ -8,7 +8,6 @@ import ButtonSubmit from "../components/buttonSubmit.vue";
 import InputPosition from "../components/inputPosition.vue";
 import ErrorSpan from "../components/errorSpan.vue";
 import {submitData} from "../api";
-import {reactive} from "vue";
 
 import {
   validationEmail,
@@ -18,23 +17,6 @@ import {
   validationPosition
 } from "../validation/validation.ts";
 import Layout from "../components/Layout.vue";
-
-const Data = reactive({
-  inputName: '',
-  inputEmail: '',
-  inputPosition: '',
-  inputPassword: '',
-  inputPasswordRepeat: '',
-  isVisibilityProfile: true,
-  agreement: true
-})
-const dataError = reactive({
-  inputNameError: '',
-  inputEmailError: '',
-  inputPositionError: '',
-  inputPasswordError: '',
-  inputPasswordRepeatError: ''
-})
 
 export default {
   components: {
@@ -51,9 +33,24 @@ export default {
   },
   data() {
     return {
-      Data,
-      dataError,
+       Data :{
+        inputName: '',
+        inputEmail: '',
+        inputPosition: '',
+        inputPassword: '',
+        inputPasswordRepeat: '',
+        isVisibilityProfile: true,
+        agreement: true
+      },
       isSuccessfully: false,
+
+       dataError:{
+        inputNameError: '',
+        inputEmailError: '',
+        inputPositionError: '',
+        inputPasswordError: '',
+        inputPasswordRepeatError: ''
+      },
     };
   },
   methods: {
@@ -122,6 +119,7 @@ export default {
         </layout>
       </div>
       <div class="wrap-input">
+        <layout>
         <inputPosition name="Должность"
                        @change:value="value => updateDataField('inputPosition', value, validationPosition)"
                        :options="[
@@ -130,14 +128,15 @@ export default {
                    {value: 3, name: 'Senior'}
                    ]" />
         <errorSpan :value="dataError.inputPositionError" />
+        </layout>
       </div>
       <div class="wrap-input">
         <layout>
-          <inputPassword  :placeholder="'Пароль'" :value="Data.inputPassword" @input:value="value => updateDataField('inputPassword', value, validationPassword)" />
+          <inputPassword :isShowPassword="true" :placeholder="'Пароль'" :value="Data.inputPassword" @input:value="value => updateDataField('inputPassword', value, validationPassword)" />
           <errorSpan :value="dataError.inputPasswordError" />
         </layout>
         <layout>
-          <inputPassword  :placeholder="'Повторите пароль'" :value="Data.inputPasswordRepeat" @input:value="value => updateDataField('inputPasswordRepeat', value, (v) => validationPasswordRepeat(v, Data.inputPassword))" />
+          <inputPassword :isShowPassword="false" :placeholder="'Повторите пароль'" :value="Data.inputPasswordRepeat" @input:value="value => updateDataField('inputPasswordRepeat', value, (v) => validationPasswordRepeat(v, Data.inputPassword))" />
           <errorSpan :value="dataError.inputPasswordRepeatError" />
         </layout>
       </div>

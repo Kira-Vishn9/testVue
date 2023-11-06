@@ -1,16 +1,18 @@
 <script lang="ts">
+import imgEyeOpen from '../assets/showed.svg'
+import imgEyeHided from '../assets/hided.svg'
 export default {
   props: {
     value: String,
     placeholder: String,
-    url: String
+    isShowPassword: Boolean,
   },
-  emits: ['input:value'],
   data() {
     return {
-      showPassword: false,
-    };
+      showPassword: this.isShowPassword
+    }
   },
+  emits: ['input:value'],
   methods: {
     onInput(event: Event) {
       if (!(event.target instanceof HTMLInputElement)) return;
@@ -19,6 +21,11 @@ export default {
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
     },
+  },
+  computed: {
+    changeImgEye() {
+      return this.showPassword ? imgEyeOpen : imgEyeHided
+    }
   },
 };
 </script>
@@ -30,10 +37,11 @@ export default {
         :placeholder="placeholder"
         @input="onInput"
         :value="value"
+        autocomplete="new-password"
     />
     <img
       class="eye"
-      src="../assets/hided.svg"
+      :src="changeImgEye"
       alt="Показать/Скрыть пароль"
       @click="togglePasswordVisibility"
     />
